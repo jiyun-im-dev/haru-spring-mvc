@@ -16,7 +16,7 @@
 			본문
 		</p>
 		<p>
-			<textarea rows="10" name="content-body" style="width:100%"></textarea>
+			<textarea rows="10" name="content_body" style="width:100%"></textarea>
 		</p>
 		<p>
 			<input type="submit" name="create" value="블로그 컨텐츠 작성">

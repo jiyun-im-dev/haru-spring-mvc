@@ -3,10 +3,12 @@ package haru.spring.mvc.blog.service.impl;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import haru.spring.mvc.blog.dao.BlogDao;
 import haru.spring.mvc.blog.service.BlogService;
 
+@Service
 public class BlogServiceImpl implements BlogService {
 	
 	private BlogDao blogDao;
