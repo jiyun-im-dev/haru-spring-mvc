@@ -23,4 +23,9 @@ public class BlogServiceImpl implements BlogService {
 		return this.blogDao.insert(map);
 	}
 
+	@Override
+	public Map<String, Object> read(int blogContSeq) {
+		// 기본 키를 매개변수로 넘기면 DAO에서 쿼리를 실행해 해당하는 객체를 찾아 리턴한다
+		return this.blogDao.selectOne(blogContSeq);
+	}
 }

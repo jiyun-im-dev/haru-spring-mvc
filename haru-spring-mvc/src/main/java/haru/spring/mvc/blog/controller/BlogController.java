@@ -32,7 +32,6 @@ public class BlogController {
 	
 	@GetMapping(value = "/read/{blogContSeq}")
 	public String getRead(@PathVariable("blogContSeq") int blogContSeq, Model model) {
-		// TODO: 서비스 클래스에 Map 타입(키(컬럼명)-값(데이터))으로 글 데이터를 반환하는 메서드 만들기
 		Map<String, Object> blogCont = blogService.read(blogContSeq);
 		model.addAttribute("blogCont", blogCont);
 		return "blog/read";
