@@ -12,6 +12,7 @@
 	    (#{seq_blg_cont}, #{title}, #{content_body})
 	    ]]>
 	</insert>
+	
 	<select id="selectOne" parameterType="java.lang.Integer" resultType="hashMap">
     <![CDATA[
     	select
@@ -25,4 +26,15 @@
 			BLG_CONT_SEQ = #{BLG_CONT_SEQ}
     ]]>
 	</select>
+	
+	<update id="update" parameterType="haru.spring.mvc.blog.vo.BlogEditRequestVO">
+	    <![CDATA[
+	    UPDATE TB_BLG_CONT
+	    SET
+	    	TITLE = #{title},
+	    	CONT_BDY = #{contBdy}
+	    WHERE
+	    BLG_CONT_SEQ = #{blgContSeq}
+	    ]]>
+	</update>
 </mapper>
