@@ -13,8 +13,10 @@
 	    <property name="password" value="1234" />
 	</bean>
 	
+	<!-- MyBatis SqlSessionFactoryBean -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource" />
+	    <property name="configLocation" value="classpath:/mybatis-config.xml" />
 	    <property name="mapperLocations" value="classpath:/sqlmap/**/*_SQL.xml" />
 	</bean>
 	
@@ -22,5 +24,11 @@
 	    class="org.mybatis.spring.SqlSessionTemplate">
 	    <constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
+	
+	<!-- MyBatis Mapper Scanner (매퍼 인터페이스 스캔) -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="haru.spring.mvc.blog.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
 		
 </beans>
