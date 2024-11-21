@@ -1,5 +1,6 @@
 package haru.spring.mvc.blog.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import haru.spring.mvc.blog.dao.BlogDao;
 import haru.spring.mvc.blog.mapper.BlogMapper;
 import haru.spring.mvc.blog.service.BlogService;
 import haru.spring.mvc.blog.vo.BlogEditRequestVo;
+import haru.spring.mvc.blog.vo.BlogListRequestVo;
+import haru.spring.mvc.blog.vo.BlogListResponseVo;
 
 // 애노테이션에 의해 서비스 빈으로 등록되어 있다
 @Service
@@ -47,5 +50,11 @@ public class BlogServiceImpl implements BlogService {
 	public boolean delete(int blogContSeq) {
 		// 삭제 성공 여부 반환
 		return this.blogMapper.delete(blogContSeq) > 0;
+	}
+	
+	@Override
+	// 블로그 컨텐츠 응답 객체들의 리스트를 리턴
+	public List<BlogListResponseVo> list(BlogListRequestVo blogListRequestVo) {
+		return this.blogMapper.selectList(blogListRequestVo);
 	}
 }

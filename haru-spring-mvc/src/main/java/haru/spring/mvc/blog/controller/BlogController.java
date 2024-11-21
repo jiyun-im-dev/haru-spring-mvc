@@ -1,5 +1,6 @@
 package haru.spring.mvc.blog.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import haru.spring.mvc.blog.service.BlogService;
 import haru.spring.mvc.blog.vo.BlogEditRequestVo;
+import haru.spring.mvc.blog.vo.BlogListRequestVo;
+import haru.spring.mvc.blog.vo.BlogListResponseVo;
 
 @Controller
 public class BlogController {
@@ -79,4 +82,13 @@ public class BlogController {
 		blogService.delete(blogContSeq);
 		return "redirect:/list";
 	}
+	
+	@GetMapping(value = "/list")
+	public String list(BlogListRequestVo blogListRequestVo, Model model) {
+		model.addAttribute("blogListRequestVo", blogListRequestVo); // 요청 객체를 모델에 담음
+		model.addAttribute("blogListResponseVoList", 
+				this.blogService.list(blogListRequestVo)); 			// 응답 객체를 모델에 담음
+		
+		return "blog/list";
+	}	
 }
