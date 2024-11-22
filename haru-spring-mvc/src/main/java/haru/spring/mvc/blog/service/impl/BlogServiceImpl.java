@@ -20,7 +20,7 @@ public class BlogServiceImpl implements BlogService {
 	private BlogDao blogDao;
 	private BlogMapper blogMapper;
 
-	// 생성자 주입(Constructor Injection) 방식을 사용
+	// 생성자 주입(Constructor Injection) 방식을 사용. 생성자가 하나일 땐 @Autowired 생략 가능
 	@Autowired
 	public BlogServiceImpl(BlogDao blogDao, BlogMapper blogMapper) {
 		this.blogDao = blogDao;

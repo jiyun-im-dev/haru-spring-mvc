@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="haru.spring.mvc.blog.mapper.CommentMapper">
+	<insert id="insert" parameterType="CommentInsertVO"
+	    <selectKey keyProperty="blgCmtSeq" resultType="java.lang.Integer" order="BEFORE">
+	    	SELECT SEQ_BLG_CMT.NEXTVAL FROM DUAL
+	    </selectKey>
+	    <![CDATA[
+	    INSERT INTO TB_BLG_CMT
+	    	(BLG_CMT_SEQ, BLG_CONT_SEQ, CMT_BDY, TMP_PW)
+	    VALUES
+	    	(#{blgCmtSeq}, #{blgContSeq}, #{cmtBdy}, #{tmpPw})
+	    ]]>
+	</insert>
+</mapper>
